@@ -1,133 +1,2229 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-        <style>
-            /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, sans-serif;font-feature-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::-webkit-backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.mx-6{margin-left:1.5rem;margin-right:1.5rem}.ml-4{margin-left:1rem}.mt-16{margin-top:4rem}.mt-6{margin-top:1.5rem}.mt-4{margin-top:1rem}.-mt-px{margin-top:-1px}.mr-1{margin-right:0.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.h-16{height:4rem}.h-7{height:1.75rem}.h-6{height:1.5rem}.h-5{height:1.25rem}.min-h-screen{min-height:100vh}.w-auto{width:auto}.w-16{width:4rem}.w-7{width:1.75rem}.w-6{width:1.5rem}.w-5{width:1.25rem}.max-w-7xl{max-width:80rem}.shrink-0{flex-shrink:0}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-6{gap:1.5rem}.gap-4{gap:1rem}.self-center{align-self:center}.rounded-lg{border-radius:0.5rem}.rounded-full{border-radius:9999px}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity))}.bg-dots-darker{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E")}.from-gray-700\/50{--tw-gradient-from:rgb(55 65 81 / 0.5);--tw-gradient-to:rgb(55 65 81 / 0);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0);--tw-gradient-stops:var(--tw-gradient-from), transparent, var(--tw-gradient-to)}.bg-center{background-position:center}.stroke-red-500{stroke:#ef4444}.stroke-gray-400{stroke:#9ca3af}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-gray-500\/20{--tw-shadow-color:rgb(107 114 128 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-red-500 *::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-red-500::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity))}.focus\:rounded-sm:focus{border-radius:0.125rem}.focus\:outline:focus{outline-style:solid}.focus\:outline-2:focus{outline-width:2px}.focus\:outline-red-500:focus{outline-color:#ef4444}.group:hover .group-hover\:stroke-gray-600{stroke:#4b5563}.z-10{z-index: 10}@media (prefers-reduced-motion: no-preference){.motion-safe\:hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}}@media (prefers-color-scheme: dark){.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:bg-gray-800\/50{background-color:rgb(31 41 55 / 0.5)}.dark\:bg-red-800\/20{background-color:rgb(153 27 27 / 0.2)}.dark\:bg-dots-lighter{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")}.dark\:bg-gradient-to-bl{background-image:linear-gradient(to bottom left, var(--tw-gradient-stops))}.dark\:stroke-gray-600{stroke:#4b5563}.dark\:text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:shadow-none{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.dark\:ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.dark\:ring-inset{--tw-ring-inset:inset}.dark\:ring-white\/5{--tw-ring-color:rgb(255 255 255 / 0.05)}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.group:hover .dark\:group-hover\:stroke-gray-400{stroke:#9ca3af}}@media (min-width: 640px){.sm\:fixed{position:fixed}.sm\:top-0{top:0px}.sm\:right-0{right:0px}.sm\:ml-0{margin-left:0px}.sm\:flex{display:flex}.sm\:items-center{align-items:center}.sm\:justify-center{justify-content:center}.sm\:justify-between{justify-content:space-between}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:gap-8{gap:2rem}.lg\:p-8{padding:2rem}}
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
+@section('content')
+    <main>
+        <section class="py-lg-8 py-5">
+            <!-- container -->
+            <div class="container my-lg-8">
+                <!-- row -->
+                <div class="row align-items-center">
+                    <!-- col -->
+                    <div class="col-lg-6 mb-6 mb-lg-0">
+                        <div>
+                            <!-- heading -->
+                            <h5 class="text-dark mb-4">
+                                <i class="fa fa-check icon-shape bg-light-success text-success rounded-circle me-2 p-1"></i>
+                                Most trusted education platform
+                            </h5>
+                            <!-- heading -->
+                            <h1 class="display-3 fw-bold mb-3">Grow your skills and advance career</h1>
+                            <!-- para -->
+                            <p class="pe-lg-10 mb-5">
+                                Start, switch, or advance your career with more than 5,000 courses, Professional Certificates, and degrees from world-class universities and companies.
+                            </p>
+                            <!-- btn -->
+                            <a href="home-academy.html#" class="btn btn-primary">Join Free Now</a>
+                            <a href="https://www.youtube.com/watch?v=Nfzi7034Kbg" class="glightbox fs-4 text-inherit ms-3">
+                                <img src="{{asset('images/svg/play-btn.svg')}}" alt="play" class="me-2" />
+                                Watch Demo
+                            </a>
+                        </div>
+                    </div>
+                    <!-- col -->
+                    <div class="col-lg-6 d-flex justify-content-center">
+                        <!-- images -->
+                        <div class="position-relative">
+                            <img src="{{ asset('images/background/acedamy-img/bg-thumb.svg') }}" alt="img" />
+                            <img src="{{ asset('images/background/acedamy-img/girl-image.png') }}" alt="girl" class="w-100 w-md-auto position-absolute end-0 bottom-0" />
+                            <img src="{{ asset('images/background/acedamy-img/frame-1.svg') }}" alt="frame" class="position-absolute top-0 ms-n8 d-none d-md-inline-block" />
+                            <img src="{{ asset('images/background/acedamy-img/frame-2.svg') }}" alt="frame" class="position-absolute bottom-0 start-0 ms-lg-n8 ms-n6 mb-n7 d-none d-md-inline-block" />
+                            <img src="{{ asset('images/background/acedamy-img/target.svg') }}" alt="target" class="position-absolute bottom-0 mb-8 ms-n8 ms-lg-n1 d-none d-md-inline-block" />
+                            <img src="{{ asset('images/background/acedamy-img/sound.svg') }}" alt="sound" class="position-absolute top-50 mt-n8 ms-n8 d-none d-md-inline-block" style="left: -100px" />
+                            <img src="{{ asset('images/background/acedamy-img/trophy.svg') }}" alt="trophy" class="position-absolute top-0 start-0 ms-n8 d-none d-md-inline-block" />
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
-                        <path d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z" fill="#FF2D20"/>
-                    </svg>
-                </div>
-
-                <div class="mt-16">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                </p>
+            </div>
+        </section>
+        <!-- container -->
+        <section class="pb-8">
+            <div class="container mb-lg-8">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 border-top-md border-bottom border-end-md">
+                        <!-- text -->
+                        <div class="py-7 text-center">
+                            <div class="mb-3">
+                                <i class="fa fa-award fs-2 text-info"></i>
                             </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laracasts.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laracasts</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </p>
+                            <div class="lh-1">
+                                <h2 class="mb-1">316,000+</h2>
+                                <span>Qualified Instructor</span>
                             </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laravel-news.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laravel News</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 border-top-md border-bottom border-end-lg">
+                        <!-- icon -->
+                        <div class="py-7 text-center">
+                            <div class="mb-3">
+                                <i class="fa fa-users fs-2 text-warning"></i>
                             </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Forge</a>, <a href="https://vapor.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vapor</a>, <a href="https://nova.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Nova</a>, and <a href="https://envoyer.io" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Telescope</a>, and more.
-                                </p>
+                            <!-- text -->
+                            <div class="lh-1">
+                                <h2 class="mb-1">1.8 Billion+</h2>
+                                <span>Course enrolments</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 border-top-lg border-bottom border-end-md">
+                        <!-- icon -->
+                        <div class="py-7 text-center">
+                            <div class="mb-3">
+                                <i class="fa fa-tv fs-2 text-primary"></i>
+                            </div>
+                            <!-- text -->
+                            <div class="lh-1">
+                                <h2 class="mb-1">41,000+</h2>
+                                <span>Courses in 42 languages</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 border-top-lg border-bottom">
+                        <!-- icon -->
+                        <div class="py-7 text-center">
+                            <div class="mb-3">
+                                <i class="fa fa-film fs-2 text-success"></i>
+                            </div>
+                            <!-- text -->
+                            <div class="lh-1">
+                                <h2 class="mb-1">179,000+</h2>
+                                <span>Online Videos</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm sm:text-left">
-                        &nbsp;
+            </div>
+        </section>
+        <section>
+            <!-- row -->
+            <div class="container mb-lg-8">
+                <div class="row">
+                    <!-- col -->
+                    <div class="col-12">
+                        <div class="mb-6">
+                            <h2 class="mb-1 h1">Most Popular Courses</h2>
+                            <p>These are the most popular courses among Geeks Courses learners worldwide in year 2022</p>
+                        </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Nav tab -->
+                        <ul class="nav nav-lb-tab mb-6 bg-gray-200 px-5 rounded-3" id="pills-tab" role="tablist">
+                            <!-- nav item -->
+                            <li class="nav-item ms-0" role="presentation">
+                                <a
+                                    class="nav-link active"
+                                    id="pills-development-tab"
+                                    data-bs-toggle="pill"
+                                    href="home-academy.html#pills-development"
+                                    role="tab"
+                                    aria-controls="pills-development"
+                                    aria-selected="true">
+                                    Development
+                                </a>
+                            </li>
+                            <!-- nav item -->
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-design-tab" data-bs-toggle="pill" href="home-academy.html#pills-design" role="tab" aria-controls="pills-design" aria-selected="false">Design</a>
+                            </li>
+                            <!-- nav item -->
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" href="home-academy.html#pills-marketing" role="tab" aria-controls="pills-marketing" aria-selected="false">
+                                    Marketing
+                                </a>
+                            </li>
+                            <!-- nav item -->
+                        </ul>
+                        <!-- Tab content -->
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- tab content -->
+                            <div class="tab-pane fade show active" id="pills-development" role="tabpanel" aria-labelledby="pills-development-tab">
+                                <!-- row -->
 
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="{{asset('images/course/course-python.jpg')}}" alt="card" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Python Course: build web application</a></h4>
+
+                                                <small>By: Douglas Howell</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$19.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="{{asset('images/course/course-python.jpg')}}" alt="card" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Python Course: build web application</a></h4>
+
+                                                <small>By: Douglas Howell</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$19.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="{{asset('images/course/course-python.jpg')}}" alt="card" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Python Course: build web application</a></h4>
+
+                                                <small>By: Douglas Howell</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$19.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="{{asset('images/course/course-python.jpg')}}" alt="card" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Python Course: build web application</a></h4>
+
+                                                <small>By: Douglas Howell</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$19.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- tab content -->
+                            <div class="tab-pane fade" id="pills-design" role="tabpanel" aria-labelledby="pills-design-tab">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-graphql.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">GraphQL: introduction to graphQL for beginners</a></h4>
+
+                                                <small>By: Michael Cundiff</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">Free</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tab Pane -->
+                            <div class="tab-pane fade" id="pills-marketing" role="tabpanel" aria-labelledby="pills-marketing-tab">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-react.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">How to easily create a website with React</a></h4>
+                                                <!-- List -->
+                                                <small>By: Morris Mccoy</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(7,700)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$29.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-business" role="tabpanel" aria-labelledby="pills-business-tab">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-wordpress.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-danger-soft">Advance</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2">
+                                                    <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">WordPress: introduction to wordpress for beginners</a>
+                                                </h4>
+
+                                                <small>By: Victor Elliott</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$39.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-python.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Python Course: build web application</a></h4>
+
+                                                <small>By: Douglas Howell</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$19.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-react.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">How to easily create a website with React</a></h4>
+                                                <!-- List -->
+                                                <small>By: Morris Mccoy</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(7,700)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$29.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-graphql.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">GraphQL: introduction to graphQL for beginners</a></h4>
+
+                                                <small>By: Michael Cundiff</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">Free</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-angular.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-danger-soft">Advance</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">Angular - the complete guide for beginner</a></h4>
+
+                                                <small>By: Jeffrey McCoy</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(8,890)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$49.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-javascript.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">How to easily create a website with JavaScript</a></h4>
+
+                                                <small>By: Claire Evans</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$39.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-css.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-danger-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2">
+                                                    <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">CSS: ultimate CSS course from beginner to advanced</a>
+                                                </h4>
+
+                                                <small>By: Carolyn Welborn</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(8,890)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$30.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-gatsby.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Gatsby Course: build web application</a></h4>
+
+                                                <small>By: Floyd Amall</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$34.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-python.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Python Course: build web application</a></h4>
+
+                                                <small>By: Douglas Howell</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$19.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-wordpress.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-danger-soft">Advance</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2">
+                                                    <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">WordPress: introduction to wordpress for beginners</a>
+                                                </h4>
+
+                                                <small>By: Victor Elliott</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">5</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$39.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-react.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">How to easily create a website with React</a></h4>
+                                                <!-- List -->
+                                                <small>By: Morris Mccoy</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">3.5</span>
+                                                    <span class="fs-6">(7,700)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$29.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-graphql.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-success-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">GraphQL: introduction to graphQL for beginners</a></h4>
+
+                                                <small>By: Michael Cundiff</small>
+                                                <div class="d-flex align-text-top mt-3">
+                                                        <span class="fs-6">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                        </span>
+
+                                                    <span class="text-warning">4</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">Free</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-javascript.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">How to easily create a website with JavaScript</a></h4>
+
+                                                <small>By: Claire Evans</small>
+                                                <div class="d-flex align-text-top mt-3">
+                                                        <span class="fs-6">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>
+                                                        </span>
+                                                    <span class="text-warning">3.5</span>
+                                                    <span class="fs-6">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$39.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-css.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-danger-soft">Beginner</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2">
+                                                    <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">CSS: ultimate CSS course from beginner to advanced</a>
+                                                </h4>
+
+                                                <small>By: Carolyn Welborn</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">5</span>
+                                                    <span class="fs-6">(8,890)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$30.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-gatsby.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-info-soft">Intermediate</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">The Gatsby Course: build web application</a></h4>
+
+                                                <small>By: Floyd Amall</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(13,245)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$34.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Card -->
+                                        <div class="card card-hover">
+                                            <a href="https://geeksui.codescandy.com/geeks/pages/course-single.html"><img src="../../assets/images/course/course-angular.jpg" alt="course" class="card-img-top" /></a>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <span class="badge bg-danger-soft">Advance</span>
+                                                    <a href="home-academy.html#" class="fs-5"><i class="fa-regular fa-heart align-middle"></i></a>
+                                                </div>
+                                                <h4 class="mb-2 text-truncate-line-2"><a href="https://geeksui.codescandy.com/geeks/pages/course-single.html" class="text-inherit">Angular - the complete guide for beginner</a></h4>
+
+                                                <small>By: Jeffrey McCoy</small>
+                                                <div class="lh-1 mt-3">
+                                                        <span class="align-text-top">
+                                                            <span class="fs-6">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="12"
+                                                                    height="12"
+                                                                    fill="currentColor"
+                                                                    class="bi bi-star-fill text-warning"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    <span class="text-warning">4.5</span>
+                                                    <span class="fs-6">(8,890)</span>
+                                                </div>
+                                            </div>
+                                            <!-- Card Footer -->
+                                            <div class="card-footer">
+                                                <div class="row align-items-center g-0">
+                                                    <div class="col">
+                                                        <h5 class="mb-0">$49.00</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <a href="home-academy.html#" class="text-inherit">
+                                                            <i class="fas fa-shopping-cart text-primary align-middle me-2"></i>
+                                                            Get Enrolled
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </section>
+        <!-- section -->
+        <section class="my-8 py-lg-8">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row align-items-center bg-primary gx-0 rounded-3">
+                    <!-- col -->
+                    <div class="col-lg-6 col-12 d-none d-lg-block">
+                        <div class="d-flex justify-content-center">
+                            <!-- img -->
+                            <div class="position-relative">
+                                <img src="{{asset('images/png/cta-instructor-1.png')}}" alt="image" class="img-fluid mt-n8" />
+                                <div class="ms-n8 position-absolute bottom-0 start-0 mb-6">
+                                    <img src="{{asset('images/svg/dollor.svg')}}" alt="dollor" />
+                                </div>
+                                <!-- img -->
+                                <div class="me-n4 position-absolute top-0 end-0">
+                                    <img src="{{asset('images/svg/graph.svg')}}" alt="graph" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-12">
+                        <div class="text-white p-5 p-lg-0">
+                            <!-- text -->
+                            <h2 class="h1 text-white">Become an instructor today</h2>
+                            <p class="mb-0">Instructors from around the world teach millions of students on Geeks. We provide the tools and skills to teach what you love.</p>
+                            <a href="home-academy.html#" class="btn btn-white mt-4">Start Teaching Today</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-lg-8 pb-6">
+            <div class="container mb-lg-8">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-md-12 col-12">
+                        <div class="text-center mb-lg-8 mb-6">
+                            <h2 class="h1 fw-bold">
+                                Building strong
+                                <u class="text-warning"><span class="text-primary">foundational skills</span></u>
+                            </h2>
+                            <p class="lead mb-0">Online courses certification section design for showcase your certificate program features.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xl-5 col-lg-6 col-md-12 col-12">
+                        <div class="mb-6 mb-lg-0">
+                            <div class="mb-2">
+                                <img src="{{asset('images/education/certificate.jpg')}}" alt="certificate" class="img-fluid w-100">
+                            </div>
+                            <div class="d-flex">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="var(--gk-primary)" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                                            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"></path>
+                                        </svg>
+                                    </span>
+                                <span class="ms-2">Completion certificate awarded on every course completion</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 offset-xl-1 col-lg-6 col-md-12 col-12">
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <div class="mb-4 mb-xl-6">
+                                    <div class="mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gk-primary)" class="bi bi-trophy" viewBox="0 0 16 16">
+                                            <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4>Learn from Industry Experts</h4>
+                                        <p>Lorem ipsum dolor sit amet, conse ctetur adipisc amus ac iaculis arcu.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-lg-6 mb-4">
+                                    <div class="mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gk-primary)" class="bi bi-star" viewBox="0 0 16 16">
+                                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4>Free Resources</h4>
+                                        <p>Pellentesque sagittis placerat mollii purus onvallis venenatis asapien.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-4 mb-md-0">
+                                    <div class="mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gk-primary)" class="bi bi-shield-lock" viewBox="0 0 16 16">
+                                            <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"></path>
+                                            <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4>Learn Anytime, Anywhere</h4>
+                                        <p>Integer ultricies lorem nec erat fau euismod ipsum nislnec leo iaculis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div>
+                                    <div class="mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gk-primary)" class="bi bi-nut" viewBox="0 0 16 16">
+                                            <path d="m11.42 2 3.428 6-3.428 6H4.58L1.152 8 4.58 2h6.84zM4.58 1a1 1 0 0 0-.868.504l-3.428 6a1 1 0 0 0 0 .992l3.428 6A1 1 0 0 0 4.58 15h6.84a1 1 0 0 0 .868-.504l3.429-6a1 1 0 0 0 0-.992l-3.429-6A1 1 0 0 0 11.42 1H4.58z"></path>
+                                            <path d="M6.848 5.933a2.5 2.5 0 1 0 2.5 4.33 2.5 2.5 0 0 0-2.5-4.33zm-1.78 3.915a3.5 3.5 0 1 1 6.061-3.5 3.5 3.5 0 0 1-6.062 3.5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4>Skill-based Learning</h4>
+                                        <p>Duis sed sollicitudin narcu mi, faucibus in sapien non, auctor placerat arcu.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8 bg-gray-200" style="background: url({{asset('images/background/course-graphics.svg')}}) no-repeat; background-size: cover; background-position: top center">
+            <div class="container my-lg-8">
+                <!-- row -->
+                <div class="row justify-content-center text-center">
+                    <div class="col-md-9 col-12">
+                        <!-- heading -->
+                        <h2 class="display-4">Join more than 1 million learners worldwide</h2>
+                        <p class="lead px-lg-8 mb-6">Effective learning starts with assessment. Learning a new skill is hard work—Signal makes it easier.</p>
+                        <!-- button -->
+                        <div class="d-grid d-md-block">
+                            <a href="../sign-up.html" class="btn btn-primary mb-2 mb-md-0">Start Learning for Free</a>
+                            <a href="../sign-up.html" class="btn btn-info">Geeks for Business</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section -->
+    </main>
+@endsection
