@@ -23,8 +23,8 @@
                             @csrf
                             <!-- Username -->
                             <div class="mb-3">
-                                <label for="name" class="form-label">User Name</label>
-                                <input type="text" id="name" class="form-control" name="name" placeholder="User Name" required="">
+                                <label for="name" class="form-label">Username</label>
+                                <input type="text" id="name" class="form-control" name="name" placeholder="Username" required="">
                                 <div class="invalid-feedback">Please enter valid username.</div>
                             </div>
                             <!-- Email -->

@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\QuizzesController;
+use App\Http\Controllers\Profile\AccountDeleteController;
+use App\Http\Controllers\Profile\AccountSettingsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,20 +24,71 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::middleware('auth')->prefix('profile')->group(function () {
+Route::middleware(['auth', '2fa'])->prefix('profile')->group(function () {
     Route::get('dashboard', function () {
         return view('profile.dashboard');
     })->name('profile.dashboard');
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('social-profiles', function () {
+        return view('profile.social-profiles');
+    })->name('profile.social-profiles');
+
+    Route::get('all-courses', function () {
+        return view('profile.all-courses');
+    })->name('profile.allcourses');
+
+    Route::get('certificates', function () {
+        return view('profile.certificates');
+    })->name('profile.certificates');
+
+    Route::get('/my-quiz', function () {
+        return view('profile.my-quiz');
+    })->name('profile.my-quiz');
+
+    Route::get('/create-quiz', function () {
+        return view('profile.create-quiz');
+    })->name('profile.create-quiz');
+
+    Route::get('/my-learning', function () {
+        return view('profile.my-learning');
+    })->name('profile.mylearning');
+
+    Route::get('/quizzes', function () {
+        $topics = \App\Models\TopicQuiz::all();
+        return view('profile.quizzes', compact('topics'));
+    })->name('profile.quizzes');
+
+
+    Route::get('/quiz/start/{id}', [\App\Http\Controllers\QuizController::class, 'start'])->name('quiz.start');
+    Route::post('/quiz/next', [\App\Http\Controllers\QuizController::class, 'nextQuestion'])->name('quiz.next');
+    Route::get('/quiz/result/{topic_id}', [\App\Http\Controllers\QuizController::class, 'resultQuiz'])->name('quiz.end');
+    Route::get('/quiz/exit/{topic_id}', [\App\Http\Controllers\QuizController::class, 'exitQuiz'])->name('quiz.exit');
+
+    Route::get('/account-delete', [AccountDeleteController::class, 'index'])->name('profile.index');
+    Route::post('/account-delete', [AccountDeleteController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/setting', [AccountSettingsController::class, 'index'])->name('setting.index');
+    Route::post('/account/update-email', [AccountSettingsController::class, 'updateEmail'])->name('account.update.email');
+    Route::post('/account/update-password', [AccountSettingsController::class, 'updatePassword'])->name('account.update.password');
 });
 
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
-});
 
+
+    Route::get('quizzes', [QuizzesController::class, 'index'])->name('admin.quizzes');
+    Route::get('quizzes/create', [QuizzesController::class, 'create'])->name('admin.quizzes.create');
+
+    Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+    Route::post('categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::post('categories/{category}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
+
+});
+Route::view('/404', 'error.404')->name('404');
 require __DIR__.'/auth.php';

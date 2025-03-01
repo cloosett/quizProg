@@ -2,7 +2,8 @@
     <div class="container-fluid px-0">
         <div class="d-flex">
             <a class="navbar-brand" href="{{route('welcome')}}"><img src="{{asset('images/brand/logo/logo.svg')}}" alt="Geeks" /></a>
-            <div class="dropdown d-none d-md-block">
+            @if (Route::currentRouteName() == 'welcome')
+                <div class="dropdown d-none d-md-block">
                 <button class="btn btn-light-primary text-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-list me-2 align-middle"></i>
                     Category
@@ -92,6 +93,7 @@
                     </li>
                 </ul>
             </div>
+            @endif
         </div>
         <div class="order-lg-3">
             <div class="d-flex align-items-center">
@@ -127,14 +129,14 @@
                             <li class="dropdown ms-2 d-inline-block position-static">
                                 <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <div class="avatar avatar-md avatar-indicators avatar-online">
-                                        <img alt="avatar" src="{{asset('images/avatar/avatar-1.jpg')}}" class="rounded-circle">
+                                        <img alt="avatar" src="{{asset('images/avatar/default-avatar.png')}}" class="rounded-circle">
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end position-absolute mx-3 my-5">
                                     <div class="dropdown-item">
                                         <div class="d-flex">
                                             <div class="avatar avatar-md avatar-indicators avatar-online">
-                                                <img alt="avatar" src="{{asset('images/avatar/avatar-1.jpg')}}" class="rounded-circle">
+                                                <img alt="avatar" src="{{asset('images/avatar/default-avatar.png')}}" class="rounded-circle">
                                             </div>
                                             <div class="ms-3 lh-1">
                                                 <h5 class="mb-1">{{auth()->user()->name}}</h5>
@@ -177,7 +179,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="../pages/profile-edit.html">
+                                            <a class="dropdown-item" href="{{route('profile.dashboard')}}">
                                                 <i class="fe fe-user me-2"></i>
                                                 Profile
                                             </a>
