@@ -25,10 +25,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $user = Auth::getProvider()->retrieveByCredentials(['email' => $email, 'password' => $password]);
+        if ($user->google2fa_enabled && !session('2fa_verified')) {
+            session(['user' => $user]);
+            return redirect()->route('2fa.confirm');
+        }
+
         $request->authenticate();
 
         $request->session()->regenerate();
-
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
