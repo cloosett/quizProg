@@ -28,9 +28,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex flex-row align-items-center justify-content-between mb-4">
-                        <h2 class="mb-0">React Quiz</h2>
+                        <h2 class="mb-0">{{ $quiz->category->name }}</h2>
 
-                        <a href="{{ route('quiz.exit', $topicID) }}" class="btn btn-dark">Stop Quiz</a>
+                        <a href="{{ route('quiz.exit', $quiz_id) }}" class="btn btn-dark">Stop Quiz</a>
                     </div>
                     <form class="card" method="POST" action="{{ route('quiz.next') }}">
                         @csrf
@@ -39,7 +39,7 @@
                             <!-- quiz -->
                             <div
                                 class="d-flex flex-md-row flex-column justify-content-between align-items-md-center gap-1 gap-md-0">
-                                <h3 class="mb-0"><a href="#" class="text-inherit">React State Management</a></h3>
+                                <h3 class="mb-0"><a href="#" class="text-inherit">{{ $quiz->name }}</a></h3>
                                 <div>
                             <span class="text-danger">
                               <i class="fe fe-clock me-1 align-middle"></i>
@@ -85,7 +85,7 @@
                                     <!-- Button -->
                                     <div class="d-flex justify-content-end">
                                         <input type="hidden" name="question_id" value="{{ $nextQuestion->id }}">
-                                        <input type="hidden" name="topic_id" value="{{ $topicID }}">
+                                        <input type="hidden" name="quiz_id" value="{{ $quiz_id }}">
                                         <!-- Відправляємо вибрану відповідь через поле selectedAnswer -->
                                         <button type="submit" class="btn btn-primary">
                                             Next

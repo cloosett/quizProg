@@ -54,15 +54,15 @@ Route::middleware(['auth', '2fa'])->prefix('profile')->group(function () {
     })->name('profile.mylearning');
 
     Route::get('/quizzes', function () {
-        $topics = \App\Models\TopicQuiz::all();
-        return view('profile.quizzes', compact('topics'));
+        $quizzes = \App\Models\Quiz::all();
+        return view('profile.quizzes', compact('quizzes'));
     })->name('profile.quizzes');
 
 
-    Route::get('/quiz/start/{id}', [\App\Http\Controllers\QuizController::class, 'start'])->name('quiz.start');
+    Route::get('/quiz/start/{slug}', [\App\Http\Controllers\QuizController::class, 'start'])->name('quiz.start');
     Route::post('/quiz/next', [\App\Http\Controllers\QuizController::class, 'nextQuestion'])->name('quiz.next');
-    Route::get('/quiz/result/{topic_id}', [\App\Http\Controllers\QuizController::class, 'resultQuiz'])->name('quiz.end');
-    Route::get('/quiz/exit/{topic_id}', [\App\Http\Controllers\QuizController::class, 'exitQuiz'])->name('quiz.exit');
+    Route::get('/quiz/result/{quiz_id}', [\App\Http\Controllers\QuizController::class, 'resultQuiz'])->name('quiz.end');
+    Route::get('/quiz/exit/{quiz_id}', [\App\Http\Controllers\QuizController::class, 'exitQuiz'])->name('quiz.exit');
 
     Route::get('/account-delete', [AccountDeleteController::class, 'index'])->name('profile.index');
     Route::post('/account-delete', [AccountDeleteController::class, 'destroy'])->name('profile.destroy');
@@ -81,6 +81,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     Route::get('quizzes', [QuizzesController::class, 'index'])->name('admin.quizzes');
     Route::get('quizzes/create', [QuizzesController::class, 'create'])->name('admin.quizzes.create');
+    Route::post('quizzes/store', [QuizzesController::class, 'store'])->name('admin.quizzes.store');
+    Route::get('quizzes/{quiz}/edit', [QuizzesController::class, 'edit'])->name('admin.quizzes.edit');
+    Route::post('quizzes/{quiz}', [QuizzesController::class, 'update'])->name('admin.quizzes.update');
+    Route::post('quizzes/{id}/delete', [QuizzesController::class, 'destroy'])->name('admin.quizzes.destroy');
 
     Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories');
     Route::post('categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');

@@ -3,55 +3,46 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    protected $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     public function index(Request $request)
     {
         $search = $request->input('search');
-
-        if ($search) {
-            $categories = \App\Models\Category::where('name', 'like', '%' . $search . '%')
-                ->orWhere('slug', 'like', '%' . $search . '%')
-                ->get();
-        } else {
-            $categories = \App\Models\Category::all();
-        }
+        $categories = $this->categoryService->getCategories($search);
 
         return view('admin.categories', compact('categories'));
     }
 
-    public function store(Request $request){
-        // dodati validaciju
-
-        $category = Category::create([
-            'name' => $request->title,
-            'slug' => $request->slug,
-            'is_active' => $request->status ? 1 : 0
-        ]);
+    public function store(CategoryRequest $request)
+    {
+        $data = $request->validated();
+        $this->categoryService->storeCategory($data);
 
         return redirect()->route('admin.categories');
     }
 
     public function update(Request $request, $id)
     {
-        $category = Category::findOrFail($id);
-
-        $category->update([
-            'name' => $request->title,
-            'slug' => $request->slug,
-            'is_active' => $request->status ? 1 : 0,
-        ]);
+//        $data = $request->validated();
+        $this->categoryService->updateCategory($id, $request->all());
 
         return redirect()->route('admin.categories')->with('success', 'Category updated successfully');
     }
 
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        $this->categoryService->deleteCategory($id);
 
         return redirect()->route('admin.categories')->with('success', 'Category deleted successfully');
     }

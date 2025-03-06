@@ -2,81 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
-use App\Models\Question;
+use App\Models\Quiz;
+use App\Services\PassingQuizService;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    public function clearSession()
+    protected $quizService;
+
+    public function __construct(PassingQuizService $quizService)
     {
-        session()->forget('question_number');
-        session()->forget('total_questions');
-        session()->forget('progress');
-        session()->forget('correct_answers');
+        $this->quizService = $quizService;
     }
-    public function start($topicID)
+
+
+
+    public function start($slug)
     {
-        $this->clearSession();
-        $nextQuestion = Question::with('answers')->where('topic_id', $topicID)->first();
-        session(['total_questions' => Question::where('topic_id', $topicID)->count()]);
+        $quiz = $this->quizService->getQuizBySlug($slug);
+        $nextQuestion = $this->quizService->startQuiz($slug);
+        $quiz_id = Quiz::where('slug', $slug)->first()->id;
+
         if (!$nextQuestion) {
-            return redirect()->back()->with('error', 'Питання для цієї мови не знайдено!');
+            return redirect()->back()->with('error', 'Quiz not found!');
         }
 
-        return view('profile.quiz.start', compact('nextQuestion', 'topicID'));
+        return view('profile.quiz.start', compact('nextQuestion', 'quiz', 'quiz_id'));
     }
 
     public function nextQuestion(Request $request)
     {
         $userAnswerId = $request->input('selectedAnswer');
         $questionId = $request->input('question_id');
-        $topicID = $request->input('topic_id');
-        session(['correct_answers' => 0]);
+        $quizId = $request->input('quiz_id');
 
-        $currentQuestionNumber = session('question_number', 1);
-
-        $progress = ($currentQuestionNumber / session('total_questions')) * 100;
-        session(['progress' => $progress]);
-
-        $question = Question::find($questionId);
-        $answer = Answer::find($userAnswerId);
-
-        if ($answer && $answer->is_correct) {
-            $correctAnswers = session('correct_answers', 0);
-            session(['correct_answers' => $correctAnswers + 1]);
-        }
-
-        // Отримуємо наступне питання
-        $nextQuestion = Question::where('id', '>', $questionId)
-            ->where('topic_id', $topicID)
-            ->first();
+        $nextQuestion = $this->quizService->handleNextQuestion($userAnswerId, $questionId, $quizId);
 
         if (!$nextQuestion) {
-            session(['progress' => 0]);
-            session(['question_number' => 1]);
-            session()->forget('total_questions');
-            return redirect()->route('quiz.end', ['topic_id' => $topicID]);
+            return redirect()->route('quiz.end', ['quiz_id' => $quizId]);
         }
 
-        // Інкрементуємо номер питання
-        session(['question_number' => $currentQuestionNumber + 1]);
-        return view('profile.quiz.start', compact('nextQuestion', 'topicID'));
+        return view('profile.quiz.start', compact('nextQuestion', 'quizId'));
     }
 
-
-    public function resultQuiz($topic_id)
+    public function resultQuiz($quizId)
     {
-        $correctAnswers = session('correct_answers', 0);
-        $totalQuestions = Question::where('topic_id', $topic_id)->count();
-        $incorrectAnswers = $totalQuestions - $correctAnswers;
-        $percentage = ($correctAnswers / $totalQuestions) * 100;
-        return view('profile.quiz.end', compact('correctAnswers', 'percentage', 'incorrectAnswers'));
+        $result = $this->quizService->getQuizResult($quizId);
+
+        return view('profile.quiz.end', $result);
     }
 
-    public function exitQuiz($topic_id)
+    public function exitQuiz($quizId)
     {
-        $this->clearSession();
+        $this->quizService->clearSession();
 
         return redirect()->route('profile.quizzes');
     }

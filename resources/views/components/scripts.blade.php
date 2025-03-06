@@ -1,3 +1,4 @@
+<script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('libs/@popperjs/core/dist/umd/popper.min.js')}}"></script>
 <script src="{{asset('libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('libs/simplebar/dist/simplebar.min.js')}}"></script>
