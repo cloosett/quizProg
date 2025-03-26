@@ -24,11 +24,16 @@ class QuizzesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $quizzes = Quiz::all();
+        $statusMap = ['approved' => 1, 'pending' => 0];
+        $quizzes = Quiz::when(isset($statusMap[$request->status]), function ($query) use ($statusMap, $request) {
+            $query->where('is_active', $statusMap[$request->status]);
+        })->get();
+
         return view('admin.quiz.quizzes', compact('quizzes'));
     }
+
 
     /**
      * Show the form for creating a new resource.

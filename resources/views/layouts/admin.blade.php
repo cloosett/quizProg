@@ -67,6 +67,12 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.learning') }}">
+                                            <i class="nav-icon fa fa-book-open me-2"></i>
+                                            Learning
+                                        </a>
+                                    </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
@@ -93,7 +99,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
                                            data-bs-target="#navCMS" aria-expanded="false" aria-controls="navCMS">
-                                            <i class="nav-icon fa fa-book-open me-2"></i>
+                                            <i class="nav-icon fa fa-file me-2"></i>
                                             CMS
                                         </a>
                                         <div id="navCMS" class="collapse " data-bs-parent="#sideNavbar">
@@ -120,67 +126,6 @@
                                         </div>
                                     </li>
                                     <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navProject" aria-expanded="false"
-                                           aria-controls="navProject">
-                                            <i class="nav-icon fa fa-file me-2"></i>
-                                            Project
-                                        </a>
-                                        <div id="navProject" class="collapse " data-bs-parent="#sideNavbar">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-grid.html">Grid</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-list.html">List</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                                       data-bs-target="#navprojectSingle" aria-expanded="false"
-                                                       aria-controls="navprojectSingle">
-                                                        Single
-                                                    </a>
-                                                    <div id="navprojectSingle" class="collapse "
-                                                         data-bs-parent="#navProject">
-                                                        <ul class="nav flex-column">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link  active "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-overview.html">Overview</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-task.html">Task</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-budget.html">Budget</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-team.html">Team</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-files.html">Files</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-summary.html">Summary</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/add-project.html">Create
-                                                        Project</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"

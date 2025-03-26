@@ -30,7 +30,7 @@ class StoreQuizRequest extends FormRequest
             'date' => 'required|date',
             'time' => 'required',
             'tags' => 'nullable|string',
-            'status' => 'required|in:on,off',
+            'status' => 'in:on,off',
             'quizData' => 'required|json',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5024',
         ];

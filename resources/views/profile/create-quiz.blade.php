@@ -41,7 +41,7 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <a href="./dashboard-quiz.html" class="btn btn-dark">Explore Our Quizzes</a>
+                                        <a href="{{ route('profile.createquiz') }}" class="btn btn-dark">Create Your Quiz</a>
                                     </div>
                                 </div>
                             </div>

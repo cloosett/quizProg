@@ -18,7 +18,8 @@ class QuizRepository
             'date' => $data['date'],
             'time' => $data['time'],
             'tags' => $data['tags'],
-            'is_active' => $data['status'] === 'on' ? 1 : 0
+            'is_active' => isset($data['status']) && $data['status'] === 'on' ? 1 : 0,
+            'user_id' => auth()->user()->id
         ]);
 
         if (isset($data['image']) && $data['image']->isValid()) {
@@ -69,4 +70,5 @@ class QuizRepository
 
         return true;
     }
+
 }

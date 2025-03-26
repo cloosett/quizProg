@@ -20,7 +20,13 @@ class Quiz extends Model
         'time',
         'tags',
         'image',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function category()
     {

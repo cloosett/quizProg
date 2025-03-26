@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Profile\Quiz;
 
+use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Services\PassingQuizService;
 use Illuminate\Http\Request;
