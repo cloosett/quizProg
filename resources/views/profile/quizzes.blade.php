@@ -24,7 +24,7 @@
                 <div class="col-12">
                     <div class="row align-items-center">
                         <div class="col-md-9 col-6">
-                            <span><span class="fw-bold">12</span>  <span>Quizzes</span></span>
+                            <span><span class="fw-bold">{{ $quizzes->count() }}</span>  <span>Quizzes</span></span>
                         </div>
 
                         <div class="col-md-3 col-6">
@@ -34,18 +34,19 @@
 
                     </div>
                 </div>
-                @foreach($topics as $topic)
+                @foreach($quizzes as $quiz)
                     <div class="col-xxl-4 col-xl-6 col-12">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column gap-4">
                                 <div class="d-flex flex-row justify-content-between">
                                     <div class=" d-flex flex-column gap-md-1 gap-2">
                                         <h3 class="mb-0 ">
-                                            <a href="#!" class="text-inherit">{{$topic->name}}</a>
+                                            <a href="#!" class="text-inherit">{{$quiz->name}}</a>
                                         </h3>
                                         <div class="d-flex flex-md-row flex-column align-items-md-center gap-1 lh-1">
                                             <span>Course</span>
-                                            <a href="#!">Web Development
+                                            <a href="#">
+                                                {{ $quiz->category->name }}
                                                 <span class="align-text-top"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                      <g id="7544f13f" clip-path="url(#c23d28ce)">
                                        <path id="f036e129" fill-rule="evenodd" clip-rule="evenodd" d="M6.477 2.625C6.477 2.52554 6.43749 2.43016 6.36717 2.35984C6.29684 2.28951 6.20146 2.25 6.102 2.25H1.125C0.826631 2.25 0.540483 2.36853 0.329505 2.5795C0.118526 2.79048 0 3.07663 0 3.375L0 10.875C0 11.1734 0.118526 11.4595 0.329505 11.6705C0.540483 11.8815 0.826631 12 1.125 12H8.625C8.92337 12 9.20952 11.8815 9.4205 11.6705C9.63147 11.4595 9.75 11.1734 9.75 10.875V5.898C9.75 5.79854 9.71049 5.70316 9.64017 5.63283C9.56984 5.56251 9.47446 5.523 9.375 5.523C9.27554 5.523 9.18016 5.56251 9.10983 5.63283C9.03951 5.70316 9 5.79854 9 5.898V10.875C9 10.9745 8.96049 11.0698 8.89017 11.1402C8.81984 11.2105 8.72446 11.25 8.625 11.25H1.125C1.02554 11.25 0.930161 11.2105 0.859835 11.1402C0.789509 11.0698 0.75 10.9745 0.75 10.875V3.375C0.75 3.27554 0.789509 3.18016 0.859835 3.10984C0.930161 3.03951 1.02554 3 1.125 3H6.102C6.20146 3 6.29684 2.96049 6.36717 2.89016C6.43749 2.81984 6.477 2.72446 6.477 2.625Z" fill="#754FFE"></path>
@@ -61,11 +62,12 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <span class="badge bg-info-subtle text-info rounded-pill">Medium</span>
+                                        <span class="badge {{ $quiz->level == 'easy' ? 'bg-success-subtle text-success' : ($quiz->level == 'medium' ? 'bg-warning-subtle text-warning' : ($quiz->level == 'hard' ? 'bg-danger-subtle text-danger' : 'bg-secondary-subtle text-secondary')) }} rounded-pill">{{ ucfirst($quiz->level) }}</span>
                                     </div>
+
                                 </div>
                                 <div class="d-flex flex-column gap-3">
-                                    <p class="mb-0">Explore CSS layout techniques, including Flexbox and Grid systems.</p>
+                                    <p class="mb-0">{{ $quiz->description }}</p>
                                     <ul class="mb-0 list-unstyled d-flex flex-column gap-2">
                                         <li class="d-flex flex-row align-items-center justify-content-between fs-5">
                                  <span class="d-flex flex-row gap-2 align-items-center lh-1">
@@ -84,7 +86,7 @@
                                      </span>
                                      <span>Due Date</span>
                                  </span>
-                                            <span class="fw-medium">16 Dec, 2024 18:00</span>
+                                            <span class="fw-medium">{{ \Carbon\Carbon::parse($quiz->date)->format('d F, Y') }}</span>
                                         </li>
                                         <li class="d-flex flex-row align-items-center justify-content-between fs-5">
                                  <span class="d-flex flex-row gap-2 align-items-center lh-1">
@@ -103,7 +105,7 @@
                                      </span>
                                      <span>Time Limit</span>
                                  </span>
-                                            <span class="fw-medium">45 minutes</span>
+                                            <span class="fw-medium">{{ \Carbon\Carbon::parse($quiz->time)->format('H:i') }}</span>
                                         </li>
                                         <li class="d-flex flex-row align-items-center justify-content-between fs-5">
                                  <span class="d-flex flex-row gap-2 align-items-center lh-1">
@@ -122,7 +124,7 @@
                                      </span>
                                      <span>Total questions </span>
                                  </span>
-                                            <span class="fw-medium">25 MCQs</span>
+                                            <span class="fw-medium">{{ $quiz->questions->count() }}</span>
                                         </li>
                                     </ul>
                                     <div>
@@ -132,7 +134,7 @@
                                 <div class="row gap-2 gap-md-0">
                                     <div class="col-md-9 col-12">
                                         <div class="d-flex flex-row gap-2 align-items-center">
-                                            <a href="{{ route('quiz.start', $topic->id) }}" class="btn btn-primary">Start Quiz</a>
+                                            <a href="{{ route('quiz.start', $quiz->slug) }}" class="btn btn-primary">Start Quiz</a>
                                             <a href="#!" class="btn btn-outline-secondary">
                             <span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></span>

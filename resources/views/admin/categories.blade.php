@@ -6,21 +6,21 @@
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="border-bottom pb-3 mb-3 d-flex flex-column flex-md-row gap-3 align-items-md-center justify-content-between">
                     <div class="d-flex flex-column gap-1">
-                        <h1 class="mb-0 h2 fw-bold">Категорії курсів</h1>
+                        <h1 class="mb-0 h2 fw-bold">Categories of courses</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('admin.dashboard') }}">Панель управління</a>
+                                    <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="#">Курси</a>
+                                    <a href="{{ route('admin.quizzes') }}">Quizzez</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Категорії курсів</li>
+                                <li class="breadcrumb-item active" aria-current="page">Category Quizzes</li>
                             </ol>
                         </nav>
                     </div>
                     <div>
-                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newCategoriesModal" id="addCategoryBtn">Додати нову категорію</a>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newCategoriesModal" id="addCategoryBtn">Add new category</a>
                     </div>
                 </div>
             </div>
@@ -32,9 +32,9 @@
                     <div class="card-header border-bottom-0">
                         <form class="d-flex align-items-center" action="{{ route('admin.categories') }}" method="GET">
                             <span class="position-absolute ps-3 search-icon">
-                                <i class="fe fe-search"></i>
+                                <i class="fa fa-search"></i>
                             </span>
-                            <input type="search" class="form-control ps-6" name="search" value="{{ request('search') }}" placeholder="Пошук категорії курсів">
+                            <input type="search" class="form-control ps-6" name="search" value="{{ request('search') }}" placeholder="Search..">
                         </form>
                     </div>
                     <div class="table-responsive border-0 overflow-y-hidden">
@@ -47,12 +47,12 @@
                                         <label class="form-check-label" for="checkAll"></label>
                                     </div>
                                 </th>
-                                <th>Категорія</th>
+                                <th>Category</th>
                                 <th>Slug</th>
-                                <th>Курсів</th>
-                                <th>Дата створення</th>
-                                <th>Дата оновлення</th>
-                                <th>Статус</th>
+                                <th>Quizzes</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -71,12 +71,12 @@
                                         </a>
                                     </td>
                                     <td>{{ $category->slug }}</td>
-                                    <td>6</td>
+                                    <td>{{ $category->quizzes()->count() }}</td>
                                     <td>{{ $category->created_at }}</td>
                                     <td>{{ $category->updated_at }}</td>
                                     <td>
                                         <span class="badge {{ $category->is_active ? 'bg-success' : 'bg-danger' }}">
-                                            {{ $category->is_active ? 'Активна' : 'Неактивна' }}
+                                            {{ $category->is_active ? 'Active' : 'Inactive' }}
                                         </span>
                                     </td>
                                     <td>
@@ -87,18 +87,18 @@
                                                 <i class="fa-solid fa-ellipsis" aria-hidden="true" style="font-size: 22px"></i>
                                             </a>
                                             <span class="dropdown-menu" aria-labelledby="categoryDropdown{{ $category->id }}">
-                                                <span class="dropdown-header">Дія</span>
+                                                <span class="dropdown-header">Action</span>
                                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newCategoriesModal" href="#"
                                                    data-id="{{ $category->id }}"
                                                    data-name="{{ $category->name }}"
                                                    data-slug="{{ $category->slug }}"
                                                    data-status="{{ $category->is_active }}">
-                                                    <i class="fe fe-edit dropdown-item-icon"></i> Редагувати
+                                                    <i class="fe fe-edit dropdown-item-icon"></i> Edit
                                                 </a>
                                                 <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item">
-                                                        <i class="fe fe-trash dropdown-item-icon"></i> Видалити
+                                                        <i class="fe fe-trash dropdown-item-icon"></i> Delete
                                                     </button>
                                                 </form>
                                             </span>
@@ -124,13 +124,19 @@
                         <form id="categoryForm" action="{{ route('admin.categories.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="title" class="form-label">Назва <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="title" id="title" required>
+                                <label for="name" class="form-label">Назва <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required>
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="slug" class="form-label">Slug <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="slug" id="slug" required>
+                                <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" id="slug" required>
+                                @error('slug')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
@@ -141,8 +147,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary" id="submitButton">Додати нову категорію</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                                <button type="submit" class="btn btn-primary" id="submitButton">Add New Category</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
@@ -158,20 +164,19 @@
                 const categoryName = this.getAttribute('data-name');
                 const categorySlug = this.getAttribute('data-slug');
                 const categoryStatus = this.getAttribute('data-status') === '1';
-
-                document.getElementById('title').value = categoryName;
+                document.getElementById('name').value = categoryName;
                 document.getElementById('slug').value = categorySlug;
                 document.getElementById('status').checked = categoryStatus;
 
                 const formAction = `{{ url('admin/categories') }}/${categoryId}`;
                 document.getElementById('categoryForm').action = formAction;
-                document.getElementById('submitButton').innerText = 'Оновити категорію';
+                document.getElementById('submitButton').innerText = 'Update category';
             });
         });
 
         document.getElementById('addCategoryBtn').addEventListener('click', function () {
             document.getElementById('categoryForm').reset();
-            document.getElementById('submitButton').innerText = 'Додати нову категорію';
+            document.getElementById('submitButton').innerText = 'Add new category';
             document.getElementById('categoryForm').action = '{{ route('admin.categories.store') }}';
         });
     </script>

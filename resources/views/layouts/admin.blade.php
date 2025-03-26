@@ -41,31 +41,16 @@
                                 <!-- Navbar nav -->
                                 <ul class="navbar-nav flex-column" id="sideNavbar">
                                     <li class="nav-item">
-                                        <a class="nav-link " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navDashboard" aria-expanded="false"
-                                           aria-controls="navDashboard">
-                                            <i class="nav-icon fe fe-home me-2"></i>
+                                        <a class="nav-link" href="{{  route('admin.dashboard')}}">
+                                            <i class="nav-icon fa fa-home me-2 mb-1"></i>
                                             Dashboard
                                         </a>
-                                        <div id="navDashboard" class="collapse  show " data-bs-parent="#sideNavbar">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link  active "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/admin-dashboard.html">Overview</a>
-                                                </li>
-                                                <!-- Nav item -->
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/dashboard-analytics.html">Analytics</a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
                                            data-bs-target="#navCourses" aria-expanded="false"
                                            aria-controls="navCourses">
-                                            <i class="nav-icon fe fe-book me-2"></i>
+                                            <i class="fa fa-question-circle nav-icon me-2"></i>
                                             Quiz
                                         </a>
                                         <div id="navCourses" class="collapse " data-bs-parent="#sideNavbar">
@@ -79,20 +64,21 @@
                                                     <a class="nav-link "
                                                        href="{{ route('admin.categories') }}">Quiz Category</a>
                                                 </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/admin-course-category-single.html">Category
-                                                        Single</a>
-                                                </li>
                                             </ul>
                                         </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.learning') }}">
+                                            <i class="nav-icon fa fa-book-open me-2"></i>
+                                            Learning
+                                        </a>
                                     </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
                                            data-bs-target="#navProfile" aria-expanded="false"
                                            aria-controls="navProfile">
-                                            <i class="nav-icon fe fe-user me-2"></i>
+                                            <i class="nav-icon fa fa-user me-2"></i>
                                             User
                                         </a>
                                         <div id="navProfile" class="collapse " data-bs-parent="#sideNavbar">
@@ -113,7 +99,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
                                            data-bs-target="#navCMS" aria-expanded="false" aria-controls="navCMS">
-                                            <i class="nav-icon fe fe-book-open me-2"></i>
+                                            <i class="nav-icon fa fa-file me-2"></i>
                                             CMS
                                         </a>
                                         <div id="navCMS" class="collapse " data-bs-parent="#sideNavbar">
@@ -140,73 +126,12 @@
                                         </div>
                                     </li>
                                     <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navProject" aria-expanded="false"
-                                           aria-controls="navProject">
-                                            <i class="nav-icon fe fe-file me-2"></i>
-                                            Project
-                                        </a>
-                                        <div id="navProject" class="collapse " data-bs-parent="#sideNavbar">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-grid.html">Grid</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-list.html">List</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                                       data-bs-target="#navprojectSingle" aria-expanded="false"
-                                                       aria-controls="navprojectSingle">
-                                                        Single
-                                                    </a>
-                                                    <div id="navprojectSingle" class="collapse "
-                                                         data-bs-parent="#navProject">
-                                                        <ul class="nav flex-column">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link  active "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-overview.html">Overview</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-task.html">Task</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-budget.html">Budget</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-team.html">Team</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-files.html">Files</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link "
-                                                                   href="https://geeksui.codescandy.com/geeks/pages/dashboard/project-summary.html">Summary</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/add-project.html">Create
-                                                        Project</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
                                            data-bs-target="#navAuthentication" aria-expanded="false"
                                            aria-controls="navAuthentication">
-                                            <i class="nav-icon fe fe-lock me-2"></i>
+                                            <i class="nav-icon fa fa-lock me-2"></i>
                                             Authentication
                                         </a>
                                         <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
@@ -243,7 +168,7 @@
                                         <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
                                            data-bs-target="#navecommerce" aria-expanded="false"
                                            aria-controls="navecommerce">
-                                            <i class="nav-icon fe fe-shopping-bag me-2"></i>
+                                            <i class="nav-icon fa fa-shopping-bag me-2"></i>
                                             Ecommerce
                                         </a>
                                         <div id="navecommerce" class="collapse " data-bs-parent="#sideNavbar">
@@ -335,12 +260,6 @@
                                     </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
-                                        <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navlayouts" aria-expanded="false"
-                                           aria-controls="navlayouts">
-                                            <i class="nav-icon fe fe-layout me-2"></i>
-                                            Layouts
-                                        </a>
                                         <div id="navlayouts" class="collapse " data-bs-parent="#sideNavbar">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
@@ -371,7 +290,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link "
                                            href="https://geeksui.codescandy.com/geeks/pages/dashboard/chat-app.html">
-                                            <i class="nav-icon fe fe-message-square me-2"></i>
+                                            <i class="nav-icon fa fa-message-square me-2"></i>
                                             Chat
                                         </a>
                                     </li>
@@ -426,182 +345,7 @@
                                     <li class="nav-item">
                                         <div class="nav-divider"></div>
                                     </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <div class="navbar-heading">Components</div>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navTables" aria-expanded="false" aria-controls="navTables">
-                                            <i class="nav-icon fe fe-database me-2"></i>
-                                            Tables
-                                        </a>
-                                        <div id="navTables" class="collapse " data-bs-parent="#sideNavbar">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/basic-table.html">Basic</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/datatables.html">Data
-                                                        Tables</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link "
-                                           href="https://geeksui.codescandy.com/geeks/pages/help-center.html">
-                                            <i class="nav-icon fe fe-help-circle me-2"></i>
-                                            Help Center
-                                        </a>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navSiteSetting" aria-expanded="false"
-                                           aria-controls="navSiteSetting">
-                                            <i class="nav-icon fe fe-settings me-2"></i>
-                                            Site Setting
-                                        </a>
-                                        <div id="navSiteSetting" class="collapse " data-bs-parent="#sideNavbar">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/setting-general.html">General</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/setting-google.html">Google</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/setting-social.html">Social</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/setting-social-login.html">Social
-                                                        Login</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/setting-payment.html">Payment</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link "
-                                                       href="https://geeksui.codescandy.com/geeks/pages/dashboard/setting-smpt.html">SMPT</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                           data-bs-target="#navMenuLevel" aria-expanded="false"
-                                           aria-controls="navMenuLevel">
-                                            <i class="nav-icon fe fe-corner-left-down me-2"></i>
-                                            Menu Level
-                                        </a>
-                                        <div id="navMenuLevel" class="collapse " data-bs-parent="#sideNavbar">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link " href="#" data-bs-toggle="collapse"
-                                                       data-bs-target="#navMenuLevelSecond" aria-expanded="false"
-                                                       aria-controls="navMenuLevelSecond">
-                                                        Two Level
-                                                    </a>
-                                                    <div id="navMenuLevelSecond" class="collapse"
-                                                         data-bs-parent="#navMenuLevel">
-                                                        <ul class="nav flex-column">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link " href="#">NavItem 1</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link " href="#">NavItem 2</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link  collapsed " href="#" data-bs-toggle="collapse"
-                                                       data-bs-target="#navMenuLevelThree" aria-expanded="false"
-                                                       aria-controls="navMenuLevelThree">
-                                                        Three Level
-                                                    </a>
-                                                    <div id="navMenuLevelThree" class="collapse "
-                                                         data-bs-parent="#navMenuLevel">
-                                                        <ul class="nav flex-column">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link  collapsed " href="#"
-                                                                   data-bs-toggle="collapse"
-                                                                   data-bs-target="#navMenuLevelThreeOne"
-                                                                   aria-expanded="false"
-                                                                   aria-controls="navMenuLevelThreeOne">
-                                                                    NavItem 1
-                                                                </a>
-                                                                <div id="navMenuLevelThreeOne"
-                                                                     class="collapse collapse "
-                                                                     data-bs-parent="#navMenuLevelThree">
-                                                                    <ul class="nav flex-column">
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link " href="#">NavChild Item
-                                                                                1</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link " href="#">Nav Item 2</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <div class="nav-divider"></div>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <div class="navbar-heading">Documentation</div>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="https://geeksui.codescandy.com/geeks/docs/index.html">
-                                            <i class="nav-icon fe fe-clipboard me-2"></i>
-                                            Documentation
-                                        </a>
-                                    </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                           href="https://geeksui.codescandy.com/geeks/docs/changelog.html">
-                                            <i class="nav-icon fe fe-git-pull-request me-2"></i>
-                                            Changelog
-                                            <span class="text-primary ms-1" id="changelog">v3.3.2</span>
-                                        </a>
-                                    </li>
                                 </ul>
-                                <!-- Card -->
-                                <div class="card bg-dark-primary shadow-none text-center mx-4 my-8 border-0">
-                                    <div class="card-body py-6">
-                                        <img
-                                            src="Dashboard%20Geeks%20-%20Bootstrap%205%20Admin%20Dashboard%20Template_files/giftbox.png"
-                                            alt="">
-                                        <div class="mt-4">
-                                            <h5 class="text-white">Unlimited Access</h5>
-                                            <p class="text-white-50 fs-6">Upgrade your plan from a Free trial, to select
-                                                ‘Business Plan’. Start Now</p>
-                                            <a href="#" class="btn btn-white btn-sm mt-2">Upgrade Now</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

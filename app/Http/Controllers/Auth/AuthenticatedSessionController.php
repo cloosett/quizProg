@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $password = $request->input('password');
 
         $user = Auth::getProvider()->retrieveByCredentials(['email' => $email, 'password' => $password]);
-        if ($user->google2fa_enabled && !session('2fa_verified')) {
+        if (isset($user->google2fa_enabled) && !session('2fa_verified')) {
             session(['user' => $user]);
             return redirect()->route('2fa.confirm');
         }

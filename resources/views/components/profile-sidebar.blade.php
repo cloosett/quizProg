@@ -15,7 +15,7 @@
                     <!-- Nav item -->
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="https://geeksui.codescandy.com/geeks/pages/dashboard-student.html">
+                        <a class="nav-link active" href="{{ route('profile.dashboard') }}">
                             <i class="fa fa-home nav-icon"></i>
                             Dashboard
                         </a>
@@ -41,13 +41,6 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('profile.create-quiz')}}">Create Quiz</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="https://geeksui.codescandy.com/geeks/pages/student-quiz-start.html">Quiz Single</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="https://geeksui.codescandy.com/geeks/pages/quiz-result.html">Quiz Result</a>
                                 </li>
                             </ul>
                         </div>

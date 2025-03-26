@@ -26,7 +26,7 @@ class QuestionAnswerSeeder extends Seeder
             for ($i = 0; $i < 10; $i++) {
                 $question = Question::create([
                     'question_text' => $faker->sentence(),
-                    'topic_id' => $language->id,
+                    'quiz_id' => $language->id,
                 ]);
 
                 // Створюємо 4 відповіді для кожного питання

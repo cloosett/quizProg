@@ -15,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(SocialAuthService::class);
         $this->app->singleton(UserAuthSocialRepository::class);
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Debugbar', \Barryvdh\Debugbar\Facades\Debugbar::class);
     }
 
     /**

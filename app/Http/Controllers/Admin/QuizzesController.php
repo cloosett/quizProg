@@ -3,56 +3,78 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreQuizRequest;
+use App\Http\Requests\UpdateQuizRequest;
+use App\Models\Answer;
+use App\Models\Category;
+use App\Models\Question;
+use App\Models\Quiz;
+use App\Models\TopicQuiz;
+use App\Services\QuizService;
 use Illuminate\Http\Request;
 
 class QuizzesController extends Controller
 {
+    protected $quizService;
+
+    public function __construct(QuizService $quizService)
+    {
+        $this->quizService = $quizService;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.quiz.quizzes');
+        $statusMap = ['approved' => 1, 'pending' => 0];
+        $quizzes = Quiz::when(isset($statusMap[$request->status]), function ($query) use ($statusMap, $request) {
+            $query->where('is_active', $statusMap[$request->status]);
+        })->get();
+
+        return view('admin.quiz.quizzes', compact('quizzes'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.quiz.create');
+        $categories = Category::all();
+        return view('admin.quiz.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreQuizRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $data = $request->validated();
+        $this->quizService->storeQuiz($data);
+        return redirect()->route('admin.quizzes');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $categories = Category::all();
+        $quiz = Quiz::where('slug', $slug)->first();
+        if (!$quiz) {
+            return redirect()->route('admin.quizzes');
+        }
+        return view('admin.quiz.edit', compact('quiz','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateQuizRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $this->quizService->updateQuiz($id, $data);
+        return redirect()->route('admin.quizzes');
     }
 
     /**
@@ -60,6 +82,8 @@ class QuizzesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $quiz = $this->quizService->deleteQuiz($id);
+
+        return redirect()->route('admin.quizzes');
     }
 }
